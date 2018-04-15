@@ -243,6 +243,13 @@ and a.id > b.id<br>
     </td>
   </tr>
 
+  <tr>
+    <td>how to make a subquery its a query within another query</td>
+    <td>
+      SELECT NAME, weight From players Join (Select AVG (weight) as av From players) as subq On weight < av;<br>
+    </td>
+  </tr>
+
 </table>
 
 <!-- notes javascript -->
