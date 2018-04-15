@@ -250,6 +250,18 @@ and a.id > b.id<br>
     </td>
   </tr>
 
+  <tr>
+    <td>how to create a view its saving a query to work like a table</td>
+    <td>CREATE VIEW topFive as<br>
+    select species, count(*) as num<br>
+    from animals<br>
+    group by species<br>
+    order by num desc<br>
+    limit 5;<br>
+    select * from topfive;<br>
+    </td>
+  </tr>
+
 </table>
 
 <!-- notes javascript -->
