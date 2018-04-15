@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+
+<h2>My Notes</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for notes.." title="Type in a question">
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:60%;">Question</th>
+    <th style="width:40%;">Answer</th>
+  </tr>
+  <tr>
+    <td>how to use select with postgresql</td>
+    <td>select * from table_name_here;</td>
+  </tr>
+  <tr>
+    <td>how to use count with postgresql</td>
+    <td>select species, count(*) as num from animals group by species order by num desc;</td>
+  </tr>
+  <tr>
+    <td>how to use insert with postgresql</td>
+    <td>insert into animals(name,species,birthdate)values("billy","opossums","2017-1-1");</td>
+  </tr>
+  <tr>
+    <td>how to use joint with postgresql</td>
+    <td>select animals.name<br>
+  from animals join diet<br>
+  on animals.species = diet.species<br>
+  where food = 'fish';<br>
+    </td>
+  </tr>
+  <tr>
+    <td>how to use having with postgresql</td>
+    <td>select food, count(*) as num<br>
+  from animals join diet<br>
+  on animals.species = diet.species<br>
+  group by food<br>
+  having num = 1;<br></td>
+  </tr>
+  <tr>
+    <td>how to use sqllite hello world</td>
+    <td>
+import sqlite3<br>
+
+# Fetch some student records from the database.<br>
+db = sqlite3.connect("students")<br>
+# retreives incoming request's<br>
+c = db.cursor()<br>
+# query to run<br>
+query = "select name, id from students order by name;"<br>
+# run query<br>
+c.execute(query)<br>
+# get all of query<br>
+rows = c.fetchall()<br>
+
+# First, what data structure did we get?<br>
+print "Row data:"<br>
+print rows<br>
+
+# And let's loop over it too:<br>
+print<br>
+print "Student names:"<br>
+for row in rows:<br>
+    </td>
+  </tr>
+  <tr>
+    <td>how to use insert with sqllite database and commit</td>
+    <td>
+import sqlite3<br>
+
+db = sqlite3.connect("testdb")<br>
+c = db.cursor()<br>
+c.execute("insert into balloons values ('blue', 'water') ")<br>
+# another example c.execute("insert into fish (name) values ('nemo');")<br>
+db.commit()<br>
+db.close()<br>
+    </td>
+  </tr>
+  <tr>
+    <td>how to setup local machine</td>
+    <td>git clone https://github.com/udacity/fullstack-nanodegree-vm.git<br>
+        cd inside this directory<br>
+        cd to vagrant<br>
+        $ vagrant up<br>
+        $ vagrant ssh<br>
+        $ cd /vagrant<br>
+    </td>
+
+  </tr>
+  <tr>
+    <td>how to setup postgres psql</td>
+    <td>$ sudo apt-get install apache2</td>
+    <td>$ sudo apt-get install postgresql</td>
+    <td>go to terminal type $ psql</td>
+    <td>or $ psql postgres</td>
+  </tr>
+  <tr>
+    <td>how to use postgres psql psycopg2</td>
+    <td>
+    // database api if posgres should be import psycopg2<br>
+    import sqlite3<br>
+
+    // connect to database if on network might need hostname username password psycopg2.connect("dbname=Cookies")<br>
+    conn = sqlite3.connect("Cookies")<br>
+
+    // runs querys and fetches results<br>
+    cursor = conn.cursor()<br>
+
+    // execute a query<br>
+    cursor.execute("select host_key from cookies limit 10")<br>
+
+    // fetch all results from query <br>
+    results = cursor.fetchall()<br>
+
+    print results<br>
+
+    // close connection to database<br>
+    conn.close()<br>
+    </td>
+  </tr>
+  <tr>
+    <td>how to use psql commit</td>
+    <td>
+import sqlite3<br>
+db = sqlite3.connect("testdb")<br>
+c = db.cursor()<br>
+c.execute("insert into balloons values ('blue', 'water') ")<br>
+db.commit()<br>
+db.close()<br>
+    </td>
+  </tr>
+  <tr>
+    <td>how to see type of column in a table</td>
+    <td>\d table_name_here;</td>
+  </tr>
+  <tr>
+    <td>how to list all tables in database</td>
+    <td>\dt</td>
+  </tr>
+  <tr>
+    <td>how to create a proper insert query</td>
+    <td>
+def add_post(content):<br>
+  """Add a post to the 'database' with the current timestamp."""<br>
+  db = psycopg2.connect(database="forum")<br>
+  c = db.cursor()<br>
+  c.execute("insert into posts values (%s)", (content,))<br>
+  db.commit()<br>
+  db.close()<br>
+    </td>
+  </tr>
+  <tr>
+    <td>how to use python bleach</td>
+    <td>
+# Database code for the DB Forum, full solution!<br>
+
+import psycopg2, bleach<br>
+
+DBNAME = "forum"<br>
+
+def get_posts():<br>
+  """Return all posts from the 'database', most recent first."""<br>
+  db = psycopg2.connect(database=DBNAME)<br>
+  c = db.cursor()<br>
+  c.execute("select content, time from posts order by time desc")<br>
+  posts = c.fetchall()<br>
+  db.close()<br>
+  return posts<br>
+
+def add_post(content):<br>
+  """Add a post to the 'database' with the current timestamp."""<br>
+  db = psycopg2.connect(database=DBNAME)<br>
+  c = db.cursor()<br>
+  c.execute("insert into posts values (%s)", (bleach.clean(content),))  # good<br>
+  db.commit()<br>
+  db.close()<br>
+    </td>
+  </tr>
+  <tr>
+    <td>how to create a database</td>
+    <td>CREATE DATABASE database_name_here;</td>
+  </tr>
+  <tr>
+    <td>how to drop a database</td>
+    <td>DROP DATABASE IF EXISTS database_hame_here;</td>
+  </tr>
+  <tr>
+    <td>how to connect to a database</td>
+    <td>\c database_name_here;</td>
+  </tr>
+  <tr>
+    <td>how to create a table</td>
+    <td>
+CREATE TABLE fish (<br>
+    id serial,<br>
+    name        text<br>
+);<br>
+    </td>
+  </tr>
+  <tr>
+    <td> how to insert psql</td>
+    <td>INSERT INTO fish(name) values ('nemo');</td>
+  </tr>
+  <tr>
+    <td>how to create a primary key so it can be refrenced</td>
+    <td>
+create table students (<br>
+  id serial primary key,<br>
+  name text,<br>
+);<br>
+    </td>
+  </tr>
+
+</table>
+
+<!-- notes javascript -->
+<script type="text/javascript" src="js/notesSearch.js"></script>
+
+</body>
+</html>
