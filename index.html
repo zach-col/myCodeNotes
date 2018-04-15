@@ -232,6 +232,17 @@ CREATE TABLE sales(<br>
     <td>a foreign key makes refrence to another table column that is not a primary key</td>
   </tr>
 
+  <tr>
+    <td>how to use self join</td>
+    <td>
+select  a.building, a.room, a.id, b.id<br>
+from residences as a, residences as b<br>
+where a.building = b.building<br>
+and a.room = b.room<br>
+and a.id > b.id<br>
+    </td>
+  </tr>
+
 </table>
 
 <!-- notes javascript -->
